@@ -1,11 +1,11 @@
 package org.bootcamp;
 
+import org.bootcamp.dao.UserDAO;
+import org.bootcamp.dao.UserDAOImpl;
 import org.bootcamp.db.DatabaseConnection;
+import org.bootcamp.enums.Profile;
 import org.bootcamp.enums.Type;
-import org.bootcamp.models.Category;
-import org.bootcamp.models.Expenses;
-import org.bootcamp.models.Incomes;
-import org.bootcamp.models.Transactions;
+import org.bootcamp.models.*;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -29,17 +29,9 @@ public class MainApplication {
         System.out.println(incomes.algumasCoisa());
         System.out.println(expenses.algumasCoisa());
 
-
-
-        try{
-            Connection con = DatabaseConnection.databaseConnection();
-            System.out.println("Conectado com sucesso com a base de dados");
-        }catch (SQLException e){
-            System.out.println("Erro ao conectar a base de dados");
-            throw new RuntimeException(e);
-        }
-
-
+        UserDAO userDAO = new UserDAOImpl();
+        User user  = new User(0,"Salimo","ssalimo.carvalho@gmail.com","1233", Profile.ADMIN);
+        userDAO.createUser(user);
 
 
     }
