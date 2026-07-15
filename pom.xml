@@ -38,10 +38,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.salimocarvalho.MainApplication</mainClass>
-
-
-
+                    <mainClass>org.bootcamp.MainApplication</mainClass>
                 </configuration>
             </plugin>
 
