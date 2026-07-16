@@ -46,7 +46,7 @@ public class TransactionDAOImple implements TransactioDAO{
 
     @Override
     public void updateTransaction(Transactions transaction) {
-        String sql = "UPDATE  transactions SET (amount=?,date=?,descriptions=?,type=?,categoryId=?,userId=?)";
+        String sql = "UPDATE  transactions SET amount=?,date=?,descriptions=?,type=?,categoryId=?,userId=? WHERE id=? ";
 
         try(Connection connection = DatabaseConnection.databaseConnection();
             PreparedStatement ps = connection.prepareStatement(sql)){
@@ -137,7 +137,7 @@ public class TransactionDAOImple implements TransactioDAO{
 
 
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while (rs.next()){
 
                 CategoryDAO categoryDAO = new CategoryDAOImpl();
                 UserDAO userDAO = new UserDAOImpl();
