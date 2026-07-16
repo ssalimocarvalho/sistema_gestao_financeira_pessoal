@@ -22,12 +22,8 @@ public class MainApplication {
 
 
 
-        Transactions incomes = new Incomes();
-        Transactions expenses = new Expenses();
 
 
-        System.out.println(incomes.algumasCoisa());
-        System.out.println(expenses.algumasCoisa());
 
         UserDAO userDAO = new UserDAOImpl();
         User user  = new User(0,"Salimo","ssalimo.carvalho@gmail.com","1233", Profile.ADMIN);

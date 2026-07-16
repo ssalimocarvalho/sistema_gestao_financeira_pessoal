@@ -5,16 +5,25 @@ import org.bootcamp.enums.Type;
 
 
 public class Category {
+    private int id;
     private String name;
     private Type type;
 
-    public Category(String name, Type type) {
+    public Category(int id, String name, Type type) {
+        this.id = id;
         this.name = name;
         this.type = type;
     }
 
     public Type getType() {
         return type;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setType(Type type) {

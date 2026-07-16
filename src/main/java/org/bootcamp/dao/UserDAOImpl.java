@@ -18,7 +18,6 @@ public class UserDAOImpl implements UserDAO {
         try(Connection connection = DatabaseConnection.databaseConnection();
             PreparedStatement ps = connection.prepareStatement(sql)){
 
-
             ps.setString(1, user.getName());
             ps.setString(2, user.getEmail());
             ps.setString(3, user.getPassword());
@@ -30,7 +29,6 @@ public class UserDAOImpl implements UserDAO {
             }else {
                 System.out.println("User has not been created");
             }
-
 
 
         }catch (SQLException e){

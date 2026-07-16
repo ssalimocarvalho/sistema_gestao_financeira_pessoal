@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<VBox spacing="15"
+      style="-fx-padding: 20; -fx-background-color: #F5F5F5;"
+      prefWidth="450" prefHeight="500"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.salimocarvalho.controllers.DashboardController">
+
+    <Label fx:id="welcomeLabel"
+           text="Seja bem vindo, x"
+           style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #212121;"/>
+
+    <GridPane hgap="12" vgap="12">
+        <columnConstraints>
+            <ColumnConstraints prefWidth="200"/>
+            <ColumnConstraints prefWidth="200"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints prefHeight="100"/>
+            <RowConstraints prefHeight="100"/>
+        </rowConstraints>
+
+        <!-- Receitas -->
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="0"
+              alignment="CENTER" spacing="8"
+              style="-fx-background-color: #E8F5E9; -fx-padding: 16; -fx-background-radius: 10;">
+            <Label text="Total Incomes" style="-fx-font-size: 12; -fx-text-fill: #1B5E20;"/>
+            <Label fx:id="totalIncomesLabel" text="0.00 MT"
+                   style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2E7D32;"/>
+        </VBox>
+
+        <!-- Despesas -->
+        <VBox GridPane.columnIndex="1" GridPane.rowIndex="0"
+              alignment="CENTER" spacing="8"
+              style="-fx-background-color: #FFEBEE; -fx-padding: 16; -fx-background-radius: 10;">
+            <Label text="Total Expense" style="-fx-font-size: 12; -fx-text-fill: #B71C1C;"/>
+            <Label fx:id="totalExpensesLabel" text="0.00 MT"
+                   style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #C62828;"/>
+        </VBox>
+
+        <!-- Saldo -->
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="1"
+              alignment="CENTER" spacing="8"
+              style="-fx-background-color: #E3F2FD; -fx-padding: 16; -fx-background-radius: 10;">
+            <Label text="Current Balance" style="-fx-font-size: 12; -fx-text-fill: #0D47A1;"/>
+            <Label fx:id="balanceLabel" text="0.00 MT"
+                   style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #1565C0;"/>
+        </VBox>
+
+        <!-- Transacções -->
+        <VBox GridPane.columnIndex="1" GridPane.rowIndex="1"
+              alignment="CENTER" spacing="8"
+              style="-fx-background-color: #FFF3E0; -fx-padding: 16; -fx-background-radius: 10;">
+            <Label text="Transactions" style="-fx-font-size: 12; -fx-text-fill: #E65100;"/>
+            <Label fx:id="totalTransactionsLabel" text="0"
+                   style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #EF6C00;"/>
+        </VBox>
+    </GridPane>
+
+    <!-- Últimas transacções -->
+    <Label text="Latest Transactions"
+           style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #616161;"/>
+    <ListView fx:id="transactionList" prefHeight="180"/>
+
+</VBox>

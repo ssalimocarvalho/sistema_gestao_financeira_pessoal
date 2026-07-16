@@ -1,29 +1,40 @@
 package org.bootcamp.models;
 
+import org.bootcamp.enums.Type;
+
 import java.time.LocalDate;
 
 public abstract class Transactions {
+    private int id;
     private LocalDate date;
     private String description;
     private double amount;
+    private Type type;
     private Category category;
     private User user;
 
 
-    public Transactions(LocalDate date, String description, double amount, Category category, User user) {
+
+    public Transactions(int id,LocalDate date, String description, double amount, Type type, Category category, User user) {
+       this.id = id;
         this.date = date;
         this.description = description;
         this.amount = amount;
+        this.type = type;
         this.category = category;
         this.user = user;
     }
 
-    public Transactions() {
 
+
+
+    public int getId() {
+        return id;
     }
 
-
-   public abstract String algumasCoisa();
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public LocalDate getDate() {
         return date;
@@ -35,6 +46,14 @@ public abstract class Transactions {
 
     public String getDescription() {
         return description;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public void setDescription(String description) {
