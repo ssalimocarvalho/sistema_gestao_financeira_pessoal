@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salimocarvalho.controllers.HomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.bootcamp.controllers.HomeController">
    <center>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="203.0" prefWidth="500.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
@@ -55,7 +54,7 @@
                   <Image url="@wallet.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="602.0" text="Sistema de Gestao Financeiro Pessoal">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="602.0" text="Sistema de Gestao Financeira Pessoal">
                <font>
                   <Font name="System Bold" size="28.0" />
                </font>

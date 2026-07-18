@@ -6,7 +6,7 @@
 <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #F5F5F5;"
       prefWidth="450" prefHeight="500"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.salimocarvalho.controllers.RelatoriosController">
+      fx:controller="org.bootcamp.controllers.RelatoriosController">
 
     <Label text="Relatórios" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #212121;"/>
 

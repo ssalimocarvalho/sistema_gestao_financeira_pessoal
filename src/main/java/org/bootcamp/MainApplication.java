@@ -1,5 +1,9 @@
 package org.bootcamp;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.bootcamp.dao.UserDAO;
 import org.bootcamp.dao.UserDAOImpl;
 import org.bootcamp.db.DatabaseConnection;
@@ -11,24 +15,19 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class MainApplication {
-    public static void main(String[] args)  {
-        Category category1 =  new Category("Internet", Type.EXPENSES);
-        Category category2 =  new Category("Salario", Type.INCOMES);
-        category1.setName("Transporte");
+public class MainApplication extends Application {
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
 
-        System.out.println(category1);
+        Scene scene = new Scene(loader.load(), 700,500);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Sistma de gestao financeira");
+        primaryStage.show();
+    }
 
-
-
-
-
-
-        UserDAO userDAO = new UserDAOImpl();
-        User user  = new User(0,"Salimo","ssalimo.carvalho@gmail.com","1233", Profile.ADMIN);
-        userDAO.createUser(user);
-
-
+    public static void main(String[] args) {
+        launch(args);
     }
 }

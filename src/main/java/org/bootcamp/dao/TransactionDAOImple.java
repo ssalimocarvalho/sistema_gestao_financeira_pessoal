@@ -17,7 +17,7 @@ public class TransactionDAOImple implements TransactioDAO{
 
     @Override
     public void createTransaction(Transactions transaction) {
-        String sql = "INSERT INTO transactions(amount,date,descriptions,type,categoryId,userId) VALUES (?,?,?,?,?,?) RETURNING id";
+        String sql = "INSERT INTO transactions(amount,date,description,categoryId,userId,type) VALUES (?,?,?,?,?,?) RETURNING id";
 
         try(Connection connection = DatabaseConnection.databaseConnection();
             PreparedStatement ps = connection.prepareStatement(sql)){
@@ -27,9 +27,9 @@ public class TransactionDAOImple implements TransactioDAO{
             ps.setDouble(1, transaction.getAmount());
             ps.setDate(2, java.sql.Date.valueOf(transaction.getDate()));
             ps.setString(3, transaction.getDescription());
-            ps.setString(4, transaction.getType().name());
-            ps.setInt(5, transaction.getCategory().getId());
-            ps.setInt(6, transaction.getUser().getId());
+            ps.setInt(4, transaction.getCategory().getId());
+            ps.setInt(5, transaction.getUser().getId());
+            ps.setString(6, transaction.getType().name());
 
             ResultSet rs = ps.executeQuery();
 
@@ -46,7 +46,7 @@ public class TransactionDAOImple implements TransactioDAO{
 
     @Override
     public void updateTransaction(Transactions transaction) {
-        String sql = "UPDATE  transactions SET amount=?,date=?,descriptions=?,type=?,categoryId=?,userId=? WHERE id=? ";
+        String sql = "UPDATE  transactions SET amount=?,date=?,description=?,type=?,categoryId=?,userId=? WHERE id=? ";
 
         try(Connection connection = DatabaseConnection.databaseConnection();
             PreparedStatement ps = connection.prepareStatement(sql)){
