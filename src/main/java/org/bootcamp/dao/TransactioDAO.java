@@ -1,5 +1,6 @@
 package org.bootcamp.dao;
 
+import org.bootcamp.enums.Type;
 import org.bootcamp.models.Transactions;
 import org.bootcamp.models.User;
 
@@ -11,4 +12,6 @@ public interface TransactioDAO {
     void deleteTransaction(int id);
     Transactions getTransactions(int id);
     List<Transactions> showAllTransactions();
+    List<Transactions> getTransactionsByType();
+    double getTotalAmountByType(Type type);
 }

@@ -85,9 +85,6 @@ public class TransactionDAOImple implements TransactioDAO{
     @Override
     public Transactions getTransactions(int id) {
 
-
-
-
         String sql = "SELECT * FROM transactions WHERE id = ?";
 
         try(Connection connection = DatabaseConnection.databaseConnection();
@@ -102,7 +99,7 @@ public class TransactionDAOImple implements TransactioDAO{
                 UserDAO userDAO = new UserDAOImpl();
                 double amount = rs.getDouble("amount");
                 LocalDate date = rs.getDate("date").toLocalDate();
-                String descriptions = rs.getString("descriptions");
+                String descriptions = rs.getString("description");
                 Type type = Type.valueOf(rs.getString("type"));
                 int categoryId = rs.getInt("categoryId");
                 int userId = rs.getInt("userId");
@@ -144,7 +141,7 @@ public class TransactionDAOImple implements TransactioDAO{
                 int id = rs.getInt("id");
                 double amount = rs.getDouble("amount");
                 LocalDate date = rs.getDate("date").toLocalDate();
-                String descriptions = rs.getString("descriptions");
+                String descriptions = rs.getString("description");
                 Type type = Type.valueOf(rs.getString("type"));
                 int categoryId = rs.getInt("categoryId");
                 int userId = rs.getInt("userId");
@@ -167,5 +164,63 @@ public class TransactionDAOImple implements TransactioDAO{
         }
 
         return transactions;
+    }
+
+    @Override
+    public List<Transactions> getTransactionsByType() {
+        String sql = "SELECT * FROM transactions WHERE type='INCOMES'";
+        List<Transactions> transactions = new ArrayList<>();
+
+        try(Connection connection = DatabaseConnection.databaseConnection();
+        PreparedStatement ps = connection.prepareStatement(sql)){
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+
+                CategoryDAO categoryDAO = new CategoryDAOImpl();
+                UserDAO userDAO = new UserDAOImpl();
+                int id = rs.getInt("id");
+                double amount = rs.getDouble("amount");
+                LocalDate date = rs.getDate("date").toLocalDate();
+                String descriptions = rs.getString("description");
+                Type type = Type.valueOf(rs.getString("type"));
+                int categoryId = rs.getInt("categoryId");
+                int userId = rs.getInt("userId");
+
+                Category category = categoryDAO.getCategory(categoryId);
+                User user = userDAO.getUser(userId);
+
+                transactions.add(new Incomes(id,date,descriptions,amount,type,category,user));
+
+            }
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+        return transactions;
+    }
+
+    @Override
+    public double getTotalAmountByType(Type type) {
+
+       String sql = "SELECT SUM(Amount) FROM transactions WHERE type=?";
+       try(Connection connection =  DatabaseConnection.databaseConnection();
+       PreparedStatement ps = connection.prepareStatement(sql)){
+
+
+           ps.setString(1, type.name());
+
+           ResultSet rs = ps.executeQuery();
+           if(rs.next()){
+              return rs.getInt("sum");
+           }
+
+
+       }catch (SQLException e){
+           throw new RuntimeException(e);
+       }
+        return 0;
     }
 }
